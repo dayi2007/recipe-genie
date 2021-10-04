@@ -14,16 +14,45 @@ fetch(`${DOMAIN}?query=${value}&apiKey=${API_KEY}&includeNutrition=true`)
             return res.json()
         })
         .then((resJSON) =>{
-            console.log(resJSON)
+            //console.log(resJSON)
 
-            //ingredient(resJSON)
+            ingredient(resJSON)
         })
         .catch((error) => {
             console.log(`Error: ${error}`)
         })
 }
-recipeLibrary("apples");
+//recipeLibrary("apples");
 
-// const ingredient = (value) => {
-//      console.log(pasta)
-// }
+const ingredient = (recipe) => {
+     console.log(recipe);
+
+     const recipeName = document.createElement("h4");
+     recipeName.innerText = recipe.results[0].name;
+     const recipeImg = document.createElement("img");
+     recipeImg.src = recipe.results[0].image;
+     
+
+
+     console.log(recipeName)
+
+
+
+     const content = document.querySelector(".content");
+
+     content.append(recipeName, recipeImg);
+    
+
+ 
+}
+
+const btn = document.querySelector("#btn");
+
+btn.addEventListener("click", (event) => {
+    //event.prentDefault();
+    console.log("btn was clicked")
+    const ingredients = document.querySelector("#look-ingredients").value;
+    recipeLibrary(ingredients);
+    document.querySelector("#look-ingredients").value = " ";
+
+});
