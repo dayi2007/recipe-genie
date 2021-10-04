@@ -1,5 +1,5 @@
 const DOMAIN = "https://api.spoonacular.com/recipes/complexSearch";
-//const DOMAIN = "https://api.spoonacular.com/recipes/complexSearch?&pasta";
+const DOMAIN1 = "https://api.spoonacular.com/recipes/";
 
 //const DOMAIN = "https://api.spoonacular.com/food/menuItems/search";
 //const DOMAIN = "https://api.spoonacular.com/food/ingredients/search";
@@ -27,27 +27,39 @@ fetch(`${DOMAIN}?query=${value}&apiKey=${API_KEY}&includeNutrition=true`)
 const ingredient = (recipe) => {
      console.log(recipe);
 
+for(let i=0; i<= 9; i++ ){
+
      const recipeName = document.createElement("h3");
-     recipeName.innerText = recipe.results[0].title;
+     recipeName.innerText = recipe.results[i].title;
      const recipeImg = document.createElement("img");
-     recipeImg.src = `${recipe.results[0].image}`;
+     recipeImg.src = `${recipe.results[i].image}`;
     //  recipeImg.src = `https://spoonacular.com/cdn/ingredients_100x100/${recipe.results[0].image}`;
 
-
-     console.log(recipeName)
-
-
-
-     const content = document.querySelector(".content");
+    const id = recipe.results[i].id;
+    const content = document.querySelector(".content");
 
      content.append(recipeName, recipeImg);
-    
-
+return(id[i])
  
-}
+}//For loop 
+
+
+}//ingredient function
+
+//fetchinh domain1 to get recipe information from imput, when click in the recipe.
+// content.addEventListener("click", (ev) => {
+//     const recipeId = ( id = recipe.results[i].id) => {
+//         fetch(`${DOMAIN1}${id}/information?&apiKey=${API_KEY}`)
+//         .then(response => response.json())
+//         .then((data) => {
+//             console.log(data)})
+//     }
+//     recipeId()});
+
+
 
 const btn = document.querySelector("#btn");
-
+//event listener for search
 btn.addEventListener("click", (event) => {
     //event.prentDefault();
     console.log("btn was clicked")
