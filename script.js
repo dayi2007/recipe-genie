@@ -39,22 +39,32 @@ for(let i=0; i<= 9; i++ ){
     const content = document.querySelector(".content");
 
      content.append(recipeName, recipeImg);
-return(id[i])
- 
-}//For loop 
+
+
+    //  for(let ID in id){
+    content.addEventListener("click", (ev) => {
+    
+        const recipeId = ( id = recipe.results[i].id) => {
+            fetch(`${DOMAIN1}${id}/information?&apiKey=${API_KEY}`)
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data)})
+        } 
+        recipeId()        
+        });//Event listener
+                // }//for if statement 
+
+                const recipeID = document.createElement("p");
+    recipeID.innerText = recipeId.extendedIngredients[0].name;
+    content.appendChild(recipeID);
+    }//For loop 
+
 
 
 }//ingredient function
 
 //fetchinh domain1 to get recipe information from imput, when click in the recipe.
-// content.addEventListener("click", (ev) => {
-//     const recipeId = ( id = recipe.results[i].id) => {
-//         fetch(`${DOMAIN1}${id}/information?&apiKey=${API_KEY}`)
-//         .then(response => response.json())
-//         .then((data) => {
-//             console.log(data)})
-//     }
-//     recipeId()});
+
 
 
 
