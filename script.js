@@ -1,8 +1,8 @@
-//const DOMAIN = "https://api.spoonacular.com/recipes/complexSearch";
+const DOMAIN = "https://api.spoonacular.com/recipes/complexSearch";
 //const DOMAIN = "https://api.spoonacular.com/recipes/complexSearch?&pasta";
 
 //const DOMAIN = "https://api.spoonacular.com/food/menuItems/search";
-const DOMAIN = "https://api.spoonacular.com/food/ingredients/search";
+//const DOMAIN = "https://api.spoonacular.com/food/ingredients/search";
 const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb";
 
 
@@ -27,11 +27,11 @@ fetch(`${DOMAIN}?query=${value}&apiKey=${API_KEY}&includeNutrition=true`)
 const ingredient = (recipe) => {
      console.log(recipe);
 
-     const recipeName = document.createElement("h4");
-     recipeName.innerText = recipe.results[0].name;
+     const recipeName = document.createElement("h3");
+     recipeName.innerText = recipe.results[0].title;
      const recipeImg = document.createElement("img");
-     recipeImg.src = recipe.results[0].image;
-     
+     recipeImg.src = `${recipe.results[0].image}`;
+    //  recipeImg.src = `https://spoonacular.com/cdn/ingredients_100x100/${recipe.results[0].image}`;
 
 
      console.log(recipeName)
