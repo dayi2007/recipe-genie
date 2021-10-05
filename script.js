@@ -40,24 +40,22 @@ for(let i=0; i<= 9; i++ ){
 
      content.append(recipeName, recipeImg);
 
-
-    //  for(let ID in id){
-    content.addEventListener("click", (ev) => {
-    
-        const recipeId = ( id = recipe.results[i].id) => {
-            fetch(`${DOMAIN1}${id}/information?&apiKey=${API_KEY}`)
-            .then(response => response.json())
-            .then((data) => {
-                console.log(data)})
-        } 
-        recipeId()        
-        });//Event listener
-                // }//for if statement 
-
-                const recipeID = document.createElement("p");
+     //fetchinh domain1 to get recipe information from imput, when click in the recipe.
+     if(
+        content.addEventListener("click", (ev) => {
+            const recipeId = ( id = recipe.results[0].id) => {
+                fetch(`${DOMAIN1}${id}/information?&apiKey=${API_KEY}`)
+                .then(response => response.json())
+                .then((data) => {
+                    console.log(data.extendedIngredients[0].name)})
+            }
+            recipeId()})
+         ){
+    const recipeID = document.createElement("p");
     recipeID.innerText = recipeId.extendedIngredients[0].name;
-    content.appendChild(recipeID);
-    }//For loop 
+    content.appendChild(recipeID);}//if statement
+
+}//For loop 
 
 
 
@@ -81,7 +79,7 @@ btn.addEventListener("click", (event) => {
 
 
 /*
-checkbox and submit
+checkbox and
 
  const cb = document.querySelector('#accept');
         const btn = document.querySelector('#btn');
