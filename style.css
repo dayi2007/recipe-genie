@@ -1,5 +1,9 @@
 body {
-    background-color: #F4DDBE;
+    background-color: #f3dec2;
+}
+h1{
+    text-align: center;
+    padding-top: .5em;
 }
 .search{
     margin-left: 10px;
@@ -18,4 +22,13 @@ button[type=submit] {
 }
 .btn-outline-dark:hover{
     background-color: rgba(230, 162, 106, 0.849);
+}
+#grocery{
+    text-align: center;
+    background-color: #c7a674a4;
+    margin: 5em;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    padding-left: 3em;
+    padding-right: 3em;
 }
