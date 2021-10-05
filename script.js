@@ -3,12 +3,14 @@ const DOMAIN1 = "https://api.spoonacular.com/recipes/";
 
 //const DOMAIN = "https://api.spoonacular.com/food/menuItems/search";
 //const DOMAIN = "https://api.spoonacular.com/food/ingredients/search";
-//first API KEY gmail@
+    //first API KEY gmail@
 //const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb";
-//second API KEY developer@
+    //second API KEY developer@
 //const API_KEY = "a1529f902bc84599adb136529dc698ef";
-//third API KEY hotmail@
-const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
+    //third API KEY hotmail@
+//const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
+    //fourth API KEY @codeD
+const API_KEY = "31298333e3854dc69486fb70810303d4";
 
 
 const recipeLibrary  = (value) =>{
@@ -51,6 +53,10 @@ for(let i=0; i<= 1; i++ ){
     checkbox.type = "checkbox";
     checkbox.id = "accept";
     recipes.append(checkbox)
+
+    const check = document.getElementById("accept").checked;
+    console.log(check)
+     if (check == true){
     
             console.log(ID)
             content.addEventListener("click", (ev) => {
@@ -73,6 +79,7 @@ for(let i=0; i<= 1; i++ ){
                         content.appendChild(recipeID);
                     }
                 }
+        }
     }//For loop
 }//ingredient function
 
