@@ -1,5 +1,5 @@
 body {
-    background-color: #a7a1a286;
+    background-color: #ffffff86;
 }
 h1{
     text-align: center;
@@ -20,14 +20,25 @@ button[type=submit] {
     margin-left:0.3em;
     margin-right:0.3em;
     align-items: center;
+    border-color: #921882;
+    color:#921882;
 }
 .btn-outline-dark:hover{
-    background-color: rgba(171, 238, 64, 0.507);
+    background-color: rgba(0, 60, 255, 0.65);
+}
+.btn-outline-dark{
+    border-color: #921882;
+    color:#921882; 
+}
+.form-control{
+    border-color: #921882;
+    color: #921882;
+
 }
 #grocery{
     text-align: center;
     /* background-color: #74b6c7a4; */
-    background-color: rgba(171, 238, 64, 0.507);
+    background-color:rgba(0, 60, 255, 0.65);
     margin: 5em;
     padding-top: 1em;
     padding-bottom: 3em;
@@ -39,4 +50,7 @@ button[type=submit] {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+}
+h3{
+    text-align: center;
 }

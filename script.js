@@ -51,10 +51,12 @@ for(let i=0; i<= 1; i++ ){
     recipes.append(recipeName, recipeImg);
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.id = "accept";
+    checkbox.id = "btn-check-outlined";
+    checkbox.class = "btn btn-outline-primary";    
+
     recipes.append(checkbox)
 
-    const check = document.getElementById("accept").checked;
+    const check = document.getElementById("btn-check-outlined").checked;
     console.log(check)
      if (check == true){
     
