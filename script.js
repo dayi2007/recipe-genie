@@ -3,7 +3,12 @@ const DOMAIN1 = "https://api.spoonacular.com/recipes/";
 
 //const DOMAIN = "https://api.spoonacular.com/food/menuItems/search";
 //const DOMAIN = "https://api.spoonacular.com/food/ingredients/search";
-const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb";
+//first API KEY gmail@
+//const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb";
+//second API KEY developer@
+//const API_KEY = "a1529f902bc84599adb136529dc698ef";
+//third API KEY hotmail@
+const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
 
 
 const recipeLibrary  = (value) =>{
@@ -26,8 +31,10 @@ fetch(`${DOMAIN}?query=${value}&apiKey=${API_KEY}&includeNutrition=true`)
 
 const ingredient = (recipe) => {
      console.log(recipe);
+     const recipes = document.querySelector(".recipes");
+     const content = document.querySelector(".content"); 
 
-for(let i=0; i<= 9; i++ ){
+for(let i=0; i<= 1; i++ ){
 
      const recipeName = document.createElement("h3");
      recipeName.innerText = recipe.results[i].title;
@@ -35,36 +42,39 @@ for(let i=0; i<= 9; i++ ){
      recipeImg.src = `${recipe.results[i].image}`;
     //  recipeImg.src = `https://spoonacular.com/cdn/ingredients_100x100/${recipe.results[0].image}`;
 
-    const id = recipe.results[i].id;
-    const content = document.querySelector(".content");
+    const ID = recipe.results[i].id;
+    recipeImg.id = ID;
 
-     content.append(recipeName, recipeImg);
-
-     //fetchinh domain1 to get recipe information from imput, when click in the recipe.
-     if(
-        content.addEventListener("click", (ev) => {
-            const recipeId = ( id = recipe.results[0].id) => {
-                fetch(`${DOMAIN1}${id}/information?&apiKey=${API_KEY}`)
+    //select checkbox
+    recipes.append(recipeName, recipeImg);
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = "accept";
+    recipes.append(checkbox)
+    
+            console.log(ID)
+            content.addEventListener("click", (ev) => {
+                //fetchinh domain1 to get recipe information from input, when click in the recipe.
+                fetch(`${DOMAIN1}${ID}/information?&apiKey=${API_KEY}`)
                 .then(response => response.json())
                 .then((data) => {
-                    console.log(data.extendedIngredients[0].name)})
-            }
-            recipeId()})
-         ){
-    const recipeID = document.createElement("p");
-    recipeID.innerText = recipeId.extendedIngredients[0].name;
-    content.appendChild(recipeID);}//if statement
+                    //console.log(data.extendedIngredients[0].name)
+                    ingred(data)})
+                });
 
-}//For loop 
-
-
-
+                const ingred = (product) =>{
+                    console.log(product)
+                    //let ingred = product.extendedIngrdients
+                    for(let j=0; j< product.extendedIngredients.length; j++ ){
+                        let ingred = product.extendedIngredients;
+                        console.log(ingred[j].name);
+                        const recipeID = document.createElement("p");
+                        recipeID.innerText = ingred[j].name;
+                        content.appendChild(recipeID);
+                    }
+                }
+    }//For loop
 }//ingredient function
-
-//fetchinh domain1 to get recipe information from imput, when click in the recipe.
-
-
-
 
 const btn = document.querySelector("#btn");
 //event listener for search
@@ -76,6 +86,7 @@ btn.addEventListener("click", (event) => {
     document.querySelector("#look-ingredients").value = " ";
 
 });
+
 
 
 /*

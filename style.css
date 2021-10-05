@@ -1,5 +1,5 @@
 body {
-    background-color: #f3dec2;
+    background-color: #a7a1a286;
 }
 h1{
     text-align: center;
@@ -22,14 +22,21 @@ button[type=submit] {
     align-items: center;
 }
 .btn-outline-dark:hover{
-    background-color: rgba(230, 162, 106, 0.849);
+    background-color: rgba(171, 238, 64, 0.507);
 }
 #grocery{
     text-align: center;
-    background-color: #c7a674a4;
+    /* background-color: #74b6c7a4; */
+    background-color: rgba(171, 238, 64, 0.507);
     margin: 5em;
     padding-top: 1em;
     padding-bottom: 3em;
     padding-left: 3em;
     padding-right: 3em;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
