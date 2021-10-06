@@ -93,24 +93,21 @@ const ingredient = (recipe) => {
 
 
 }//ingredient function
-//class types of food
 
-// const veg = document.querySelector("#veg");
-// const lowCal = document.querySelector("#lowCal");
 const chicken = document.getElementById("chicken");
 chicken.addEventListener("click", (evnt) =>{
      const chkn = recipeLibrary("chicken")
-    console.log("chicken was clicked")
+    console.log("pasta was clicked")
 });
-const chicken = document.getElementById("chicken");
-chicken.addEventListener("click", (evnt) =>{
-     const chkn = recipeLibrary("chicken")
-    console.log("chicken was clicked")
+const veg = document.getElementById("veg");
+veg.addEventListener("click", (evnt) =>{
+     const vegetarian = recipeLibrary("vegetarian")
+    console.log("veg was clicked")
 });
-const chicken = document.getElementById("chicken");
-chicken.addEventListener("click", (evnt) =>{
-     const chkn = recipeLibrary("chicken")
-    console.log("chicken was clicked")
+const dessert = document.getElementById("dessert");
+dessert.addEventListener("click", (evnt) =>{
+     const Dessert = recipeLibrary("dessert")
+    console.log("Dessert was clicked")
 });
 
 
@@ -125,15 +122,3 @@ btn.addEventListener("click", (event) => {
 
 });
 
-
-
-/*
-checkbox and
-
- const cb = document.querySelector('#accept');
-        const btn = document.querySelector('#btn');
-        btn.onclick = () => {
-            const result = cb.value;
-            alert(result); // on
-        };
-*/
