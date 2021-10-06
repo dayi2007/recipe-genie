@@ -33,35 +33,42 @@ fetch(`${DOMAIN}?query=${value}&apiKey=${API_KEY}&includeNutrition=true`)
 
 const ingredient = (recipe) => {
      console.log(recipe);
-     const recipes = document.querySelector(".recipes");
-     const content = document.querySelector(".content"); 
 
-for(let i=0; i<= 1; i++ ){
+    for(let i=0; i<= 1; i++ ){
+
+        const recipes = document.querySelector(".recipes");
+        const content = document.querySelector(".content");
+    
 
      const recipeName = document.createElement("h3");
      recipeName.innerText = recipe.results[i].title;
      const recipeImg = document.createElement("img");
      recipeImg.src = `${recipe.results[i].image}`;
-    //  recipeImg.src = `https://spoonacular.com/cdn/ingredients_100x100/${recipe.results[0].image}`;
+     const recipeDiv = document.createElement("div")
+    //recipeImg.src = `https://spoonacular.com/cdn/ingredients_100x100/${recipe.results[0].image}`;
 
     const ID = recipe.results[i].id;
     recipeImg.id = ID;
 
     //select checkbox
-    recipes.append(recipeName, recipeImg);
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = "btn-check-outlined";
-    checkbox.class = "btn btn-outline-primary";    
+    recipes.append(recipeDiv);
+    recipeDiv.append(recipeName, recipeImg)
+   
+    // const checkbox = document.createElement("input");
+    // checkbox.type = "checkbox";
+    // //checkbox.id = "btn-check-outlined";
+    // //checkbox.id = `${recipe.spoonacularSourceUrl}`
+    // checkbox.class = "btn btn-outline-primary";    
 
-    recipes.append(checkbox)
+    // recipes.append(checkbox)
 
-    const check = document.getElementById("btn-check-outlined").checked;
-    console.log(check)
-     if (check == true){
-    
+   // const check = document.getElementById("btn-check-outlined").checked;
+    //console.log(check)
+     //if (check == true){
+
+                //const variable = document.querySelector(`#${recipe.spoonacularSourceUrl}`)
             console.log(ID)
-            content.addEventListener("click", (ev) => {
+            recipeDiv.addEventListener("click", (ev) => {
                 //fetchinh domain1 to get recipe information from input, when click in the recipe.
                 fetch(`${DOMAIN1}${ID}/information?&apiKey=${API_KEY}`)
                 .then(response => response.json())
@@ -81,9 +88,31 @@ for(let i=0; i<= 1; i++ ){
                         content.appendChild(recipeID);
                     }
                 }
-        }
+        //}
     }//For loop
+
+
 }//ingredient function
+//class types of food
+
+// const veg = document.querySelector("#veg");
+// const lowCal = document.querySelector("#lowCal");
+const chicken = document.getElementById("chicken");
+chicken.addEventListener("click", (evnt) =>{
+     const chkn = recipeLibrary("chicken")
+    console.log("chicken was clicked")
+});
+const chicken = document.getElementById("chicken");
+chicken.addEventListener("click", (evnt) =>{
+     const chkn = recipeLibrary("chicken")
+    console.log("chicken was clicked")
+});
+const chicken = document.getElementById("chicken");
+chicken.addEventListener("click", (evnt) =>{
+     const chkn = recipeLibrary("chicken")
+    console.log("chicken was clicked")
+});
+
 
 const btn = document.querySelector("#btn");
 //event listener for search

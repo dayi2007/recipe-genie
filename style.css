@@ -1,5 +1,7 @@
 body {
     background-color: #ffffff86;
+    /* background-image: url("./images/background-food.jpg"); */
+    background-repeat: no-repeat;
 }
 h1{
     text-align: center;
@@ -38,7 +40,7 @@ button[type=submit] {
 #grocery{
     text-align: center;
     /* background-color: #74b6c7a4; */
-    background-color:rgba(0, 60, 255, 0.65);
+    background-color:#dd18c37a;
     margin: 5em;
     padding-top: 1em;
     padding-bottom: 3em;
