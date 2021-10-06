@@ -2,8 +2,7 @@ body {
     font-family: 'Indie Flower', cursive;
     background-color: #ffffff86;
     background-image: url("./images/background-trans1.jpg");
-    background-repeat: no-repeat;
-    background-blend-mode: 0.3;
+    /* background-repeat: no-repeat; */
 }
 h1{
     text-align: center;
@@ -57,4 +56,11 @@ button[type=submit] {
 }
 h3{
     text-align: center;
+}
+#recipeDiv{
+    display: flex;
+    flex-flow:column wrap;
+    align-items: center;
+    align-content: center;
+    
 }
