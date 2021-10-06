@@ -4,9 +4,9 @@ const DOMAIN1 = "https://api.spoonacular.com/recipes/";
 //const DOMAIN = "https://api.spoonacular.com/food/menuItems/search";
 //const DOMAIN = "https://api.spoonacular.com/food/ingredients/search";
     //first API KEY gmail@
-const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb";
+//const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb";
     //second API KEY developer@
-//const API_KEY = "a1529f902bc84599adb136529dc698ef";
+const API_KEY = "a1529f902bc84599adb136529dc698ef";
     //third API KEY hotmail@
 //const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
     //fourth API KEY @codeD
@@ -33,11 +33,14 @@ fetch(`${DOMAIN}?query=${value}&apiKey=${API_KEY}&includeNutrition=true`)
 
 const ingredient = (recipe) => {
      console.log(recipe);
+         
+    const recipes = document.querySelector(".recipes");
+    //const content = document.querySelector(".content");  
+    const grocery = document.querySelector("#grocery")
+    recipes.innerText = " "; 
 
     for(let i=0; i<= 1; i++ ){
 
-    const recipes = document.querySelector(".recipes");
-    const content = document.querySelector(".content");
     
 
      const recipeName = document.createElement("h3");
@@ -72,8 +75,10 @@ const ingredient = (recipe) => {
                     ingred(data)})
                 });
 
+
                 const ingred = (product) =>{
                     console.log(product)
+                    
                     //let ingred = product.extendedIngrdients
                     for(let j=0; j< product.extendedIngredients.length; j++ ){
                         let ingred = product.extendedIngredients;
@@ -81,30 +86,45 @@ const ingredient = (recipe) => {
                         const recipeID = document.createElement("p");
                         recipeID.innerText = ingred[j].name;
                         recipeDiv.appendChild(recipeID);
-                    }
+                    }//for loop j
                    
                     const instruction = product.instructions;
                     console.log(instruction);
                     recipeDiv.append(instruction);
 
-                    recipeDiv.appendChild(addBnt); //btn to select recipe
-                }
-    
+                    recipeDiv.append(addBnt); //btn to select recipe 
+                    
+                    
+                    const selectBtn = document.getElementById("select-bnt")
+                    //const selected = (selectBtn) => {
+                        selectBtn.addEventListener("click", (Event) =>{
+                            Event.preventDefault ();
+                            console.log("the button was clicked");
+                            //insert into content at bottom // add grocerys to the list
+                            
+                            let grabDiv = document.createElement("div")
+                            let grab = document.querySelector("#recipeDiv");
+                            grab = (recipeName.innerText);
+                            console.log(grab)
+                            grabDiv.innerText = grab;
+                            grabDiv.append = (recipeImg);
+                            //grabDiv.innerHTML = grab;
+                            grocery.append(grabDiv);
+                            //console.log(grab)
+                        })//event listener select btn   //}              
+                }//product ingred
+             
     }//For loop
+    recipeDiv.innerText = " ";
 
 
 }//ingredient function
-const selectBtn = document.querySelector("#select-bnt")
-console.log(selectBtn)
-
-const selected = () => {
-    selectBtn.addEventListener("click", (Event) =>{
-        //insert into content at bottom // add grocerys to the list
-
-    })
 
 
-}
+
+
+
+
 
 
 
@@ -140,17 +160,5 @@ btn.addEventListener("click", (event) => {
 });
 
   //recipeImg.src = `https://spoonacular.com/cdn/ingredients_100x100/${recipe.results[0].image}`;
-
-   // const checkbox = document.createElement("input");
-    // checkbox.type = "checkbox";
-    // //checkbox.id = "btn-check-outlined";
-    // //checkbox.id = `${recipe.spoonacularSourceUrl}`
-    // checkbox.class = "btn btn-outline-primary";    
-
-    // recipes.append(checkbox)
-
-   // const check = document.getElementById("btn-check-outlined").checked;
-    //console.log(check)
-     //if (check == true){
 
                 //const variable = document.querySelector(`#${recipe.spoonacularSourceUrl}`)
