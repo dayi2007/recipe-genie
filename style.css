@@ -1,7 +1,8 @@
 body {
     background-color: #ffffff86;
-    /* background-image: url("./images/background-food.jpg"); */
+    background-image: url("./images/background-trans1.jpg");
     background-repeat: no-repeat;
+    background-blend-mode: 0.3;
 }
 h1{
     text-align: center;
