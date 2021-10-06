@@ -96,7 +96,7 @@ const ingredient = (recipe) => {
 
 const chicken = document.getElementById("chicken");
 chicken.addEventListener("click", (evnt) =>{
-     const chkn = recipeLibrary("chicken")
+     const chkn = recipeLibrary("pasta")
     console.log("pasta was clicked")
 });
 const veg = document.getElementById("veg");
@@ -109,7 +109,6 @@ dessert.addEventListener("click", (evnt) =>{
      const Dessert = recipeLibrary("dessert")
     console.log("Dessert was clicked")
 });
-
 
 const btn = document.querySelector("#btn");
 //event listener for search
