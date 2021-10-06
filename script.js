@@ -92,7 +92,8 @@ const ingredient = (recipe) => {
                         console.log(ingred[j].name);
                         const recipeID = document.createElement("p");
                         recipeID.id = "recipeIngredients"
-                        recipeID.innerText = ("Ingredients: <br>" + ingred[j].name);
+                        // recipeID.innerText = ("Ingredients:");
+                        recipeID.innerText = (ingred[j].name);
                         recipeDiv.appendChild(recipeID);
                     }//for loop j
                    
@@ -101,35 +102,40 @@ const ingredient = (recipe) => {
                     recipeDiv.append(instruction);
                     
 
-                    btnSearch.append(addBnt); //btn to select recipe 
                     
                     
-                    const selectBtn = document.getElementById("select-bnt")
+                    //const selectBtn = document.getElementById("select-bnt")
                     //const selected = (selectBtn) => {
-                        selectBtn.addEventListener("click", (Event) =>{
+                        addBnt.addEventListener("click", (Event) =>{
                             Event.preventDefault ();
                             console.log("the button was clicked");
 
-                //insert into picture and name at bottom                             
+                    //insert into picture and name at bottom                             
                             let grabDiv = document.createElement("div")
                             grabDiv.id = "selectedRecipe"
-                            let grab = document.querySelector("#recipeDiv");
-                            grab = (recipeName.innerText);
-                            console.log(grab)
-                            grabDiv.innerText = grab;
-                            grabDiv.append(recipeImg);                            
+                            //let grab = document.querySelector("#recipeDiv");
+                            let grab = document.createElement("p") ;
+                            //console.log(grab)
+                            grab.innerText = (recipeName.innerText);
+                            grabDiv.append(recipeImg);  
+                            grabDiv.append(grab);                          
                             //grabDiv.innerHTML = grab;
                             myRecipes.append(grabDiv);
-                // add ingredienst to grocery list
-                            let groceryList = document.createElement("li")
-                            let recipeID = document.querySelector("#recipeIngredients")
-                            groceryList.innerText = recipeID.innerText;
-                            ingredientsList.append(groceryList)
+
+                    // add ingredienst to grocery list
+                    let recipeID = product.extendedIngredients[i].name;
+                    recipeID.forEach((recipeID, i) => {
+                        console.log(`${i} | ${recipeID[i]}`);
+
+                            let groceryList = document.createElement("li")                    
+                            groceryList.innerText = recipeID[i];
+                            ingredientsList.append(groceryList)})
 
                             
                         })//event listener select btn   
                         //} 
 
+                        btnSearch.append(addBnt); //btn to select recipe 
                 }//product ingred
              
     }//For loop
