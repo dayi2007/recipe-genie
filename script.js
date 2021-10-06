@@ -59,9 +59,13 @@ const ingredient = (recipe) => {
     recipeImg.id = ID;
 
     //isert extra div to match ID
+    const element1 = document.createElement("div");
+    const btnSearch = document.createElement("div");
     recipeDiv.id = ("recipeDiv");
-    recipes.append(recipeDiv);    
+    recipes.append(element1);    
     recipeDiv.append(recipeName, recipeImg);
+    element1.append(recipeDiv);
+    element1.append(btnSearch);
     
    
    
@@ -91,8 +95,9 @@ const ingredient = (recipe) => {
                     const instruction = product.instructions;
                     console.log(instruction);
                     recipeDiv.append(instruction);
+                    
 
-                    recipeDiv.append(addBnt); //btn to select recipe 
+                    btnSearch.append(addBnt); //btn to select recipe 
                     
                     
                     const selectBtn = document.getElementById("select-bnt")
@@ -107,7 +112,9 @@ const ingredient = (recipe) => {
                             grab = (recipeName.innerText);
                             console.log(grab)
                             grabDiv.innerText = grab;
-                            grabDiv.append = (recipeImg);
+                            recipeImg.style.width = "50%";
+                            grabDiv.append(recipeImg);
+                            
                             //grabDiv.innerHTML = grab;
                             grocery.append(grabDiv);
                             //console.log(grab)
