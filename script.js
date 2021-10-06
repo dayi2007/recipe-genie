@@ -6,11 +6,13 @@ const DOMAIN1 = "https://api.spoonacular.com/recipes/";
     //first API KEY gmail@
 //const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb";
     //second API KEY developer@
-const API_KEY = "a1529f902bc84599adb136529dc698ef";
+//const API_KEY = "a1529f902bc84599adb136529dc698ef";
     //third API KEY hotmail@
-//const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
-    //fourth API KEY @codeD
+const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
+    //fourth API KEY code@
 //const API_KEY = "31298333e3854dc69486fb70810303d4";
+    //fifth API KEY noan@
+//const API_KEY = "dc7ebcc370ad458fbc4ca1b00ce22d47";
 
 
 const recipeLibrary  = (value) =>{
@@ -37,11 +39,12 @@ const ingredient = (recipe) => {
     const recipes = document.querySelector(".recipes");
     //const content = document.querySelector(".content");  
     const grocery = document.querySelector("#grocery")
+    const myRecipes = document.querySelector("#myRecipes")
+    const ingredientsList = document.querySelector("#ingredients")
     recipes.innerText = " "; 
 
     for(let i=0; i<= 1; i++ ){
-
-    
+   
 
      const recipeName = document.createElement("h3");
      recipeName.innerText = recipe.results[i].title;
@@ -70,8 +73,8 @@ const ingredient = (recipe) => {
    
    
             console.log(ID)
-            recipeDiv.addEventListener("click", (ev) => {
-                //fetchinh domain1 to get recipe information from input, when click in the recipe.
+              recipeDiv.addEventListener("click", (ev) => {
+            //fetchinh domain1 to get recipe information from input, when click in the recipe.
                 fetch(`${DOMAIN1}${ID}/information?&apiKey=${API_KEY}`)
                 .then(response => response.json())
                 .then((data) => {
@@ -88,7 +91,8 @@ const ingredient = (recipe) => {
                         let ingred = product.extendedIngredients;
                         console.log(ingred[j].name);
                         const recipeID = document.createElement("p");
-                        recipeID.innerText = ingred[j].name;
+                        recipeID.id = "recipeIngredients"
+                        recipeID.innerText = ("Ingredients: <br>" + ingred[j].name);
                         recipeDiv.appendChild(recipeID);
                     }//for loop j
                    
@@ -105,25 +109,31 @@ const ingredient = (recipe) => {
                         selectBtn.addEventListener("click", (Event) =>{
                             Event.preventDefault ();
                             console.log("the button was clicked");
-                            //insert into content at bottom // add grocerys to the list
-                            
+
+                //insert into picture and name at bottom                             
                             let grabDiv = document.createElement("div")
+                            grabDiv.id = "selectedRecipe"
                             let grab = document.querySelector("#recipeDiv");
                             grab = (recipeName.innerText);
                             console.log(grab)
                             grabDiv.innerText = grab;
-                            recipeImg.style.width = "50%";
-                            grabDiv.append(recipeImg);
-                            
+                            grabDiv.append(recipeImg);                            
                             //grabDiv.innerHTML = grab;
-                            grocery.append(grabDiv);
-                            //console.log(grab)
-                        })//event listener select btn   //}              
+                            myRecipes.append(grabDiv);
+                // add ingredienst to grocery list
+                            let groceryList = document.createElement("li")
+                            let recipeID = document.querySelector("#recipeIngredients")
+                            groceryList.innerText = recipeID.innerText;
+                            ingredientsList.append(groceryList)
+
+                            
+                        })//event listener select btn   
+                        //} 
+
                 }//product ingred
              
     }//For loop
-    recipeDiv.innerText = " ";
-
+recipeDiv.innerText = " ";
 
 }//ingredient function
 
@@ -131,15 +141,8 @@ const ingredient = (recipe) => {
 
 
 
-
-
-
-
-
-
-
 //start buttons
-const chicken = document.getElementById("chicken");
+const chicken = document.getElementById("pasta");
 chicken.addEventListener("click", (evnt) =>{
      const chkn = recipeLibrary("pasta")
     console.log("pasta was clicked")
