@@ -1,5 +1,5 @@
-const DOMAIN = "https://api.spoonacular.com/recipes/complexSearch";
-const DOMAIN1 = "https://api.spoonacular.com/recipes/";
+//const DOMAIN1 = "https://api.spoonacular.com/recipes/complexSearch";
+const DOMAIN = "https://api.spoonacular.com/recipes/";
 
 //const DOMAIN = "https://api.spoonacular.com/food/menuItems/search";
 //const DOMAIN = "https://api.spoonacular.com/food/ingredients/search";
@@ -8,26 +8,23 @@ const DOMAIN1 = "https://api.spoonacular.com/recipes/";
     //second API KEY developer@
 //const API_KEY = "a1529f902bc84599adb136529dc698ef";
     //third API KEY hotmail@
-const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
+//const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
     //fourth API KEY code@
 //const API_KEY = "31298333e3854dc69486fb70810303d4";
     //fifth API KEY noan@
-//const API_KEY = "dc7ebcc370ad458fbc4ca1b00ce22d47";
+const API_KEY = "dc7ebcc370ad458fbc4ca1b00ce22d47";
 
 
 const recipeLibrary  = (value) =>{
 
-fetch(`${DOMAIN}?query=${value}&apiKey=${API_KEY}&includeNutrition=true`)
-
+fetch(`${DOMAIN}/complexSearch?query=${value}&apiKey=${API_KEY}&includeNutrition=true`)
         .then((res) => {
             return res.json()
-        })
-        .then((resJSON) =>{
+        }).then((resJSON) =>{
             //console.log(resJSON)
 
             ingredient(resJSON)
-        })
-        .catch((error) => {
+        }).catch((error) => {
             console.log(`Error: ${error}`)
         })
 }
@@ -47,31 +44,31 @@ const ingredient = (recipe) => {
    
 
      const recipeName = document.createElement("h3");
-     recipeName.innerText = recipe.results[i].title;
+        recipeName.innerText = recipe.results[i].title;
      const recipeImg = document.createElement("img");
-     recipeImg.src = `${recipe.results[i].image}`;
+        recipeImg.src = `${recipe.results[i].image}`;
      const recipeDiv = document.createElement("div");
 
      const addBnt = document.createElement("button");
-     addBnt.type = ("text");
-     addBnt.innerText = ("Select Recipe");
-     addBnt.id = ("select-bnt");
+        addBnt.type = ("text");
+        addBnt.innerText = ("Select Recipe");
+        addBnt.id = ("select-bnt");
     
      //pair ID with image
     const ID = recipe.results[i].id;
-    recipeImg.id = ID;
+        recipeImg.id = ID;
 
     //isert extra div to match ID
     const element1 = document.createElement("div");
     const btnSearch = document.createElement("div");
     const toggle = document.createElement("div")
-    recipeDiv.id = ("recipeDiv");
-    recipes.append(element1);    
-    recipeDiv.append(recipeName, recipeImg);
-    element1.append(recipeDiv);
-    element1.append(btnSearch);
-    toggle.id = ("toggle");
-    recipeDiv.append(toggle);
+        recipeDiv.id = ("recipeDiv");
+        recipes.append(element1);    
+        recipeDiv.append(recipeName, recipeImg);
+        element1.append(recipeDiv);
+        element1.append(btnSearch);
+        toggle.id = ("toggle");
+        recipeDiv.append(toggle);
 
     toggle.addEventListener ("click", (evnts) => {
         //toggle.preventDefault ();
@@ -88,7 +85,7 @@ const ingredient = (recipe) => {
               recipeDiv.addEventListener("click", (ev) => {
             //fetchinh domain1 to get recipe information from input, when click in the recipe.
 
-                fetch(`${DOMAIN1}${ID}/information?&apiKey=${API_KEY}`)
+                fetch(`${DOMAIN}${ID}/information?&apiKey=${API_KEY}`)
                 .then(response => response.json())
                 .then((data) => {
                     //console.log(data.extendedIngredients[0].name)
@@ -98,7 +95,10 @@ const ingredient = (recipe) => {
          
                 const ingred = (product) =>{
                     console.log(product)
-                    
+                    const textIng = document.createElement("h4");
+                    textIng.innerText = "Ingredients:";
+                    toggle.appendChild(textIng);
+
                     //let ingred = product.extendedIngrdients
                     for(let j=0; j< product.extendedIngredients.length; j++ ){
                         let ingred = product.extendedIngredients;
@@ -109,19 +109,20 @@ const ingredient = (recipe) => {
                         recipeID.innerText = (ingred[j].name);
                         toggle.appendChild(recipeID);
                     }//for loop j
-                                       
+                    
+                    const textIns = document.createElement("h4");
+                    textIns.innerText = "Instructions:";
                     const instruction = product.instructions;
+                    toggle.append(textIns);
                     console.log(instruction);
-                    toggle.append(instruction);
+                    toggle.append(`${instruction.replace(/<li>|<\/li>|<ol>|<\/ol>/g, '')}`);
+                     
                     
-
-                    
-                    
-                        addBnt.addEventListener("click", (Event) =>{
+                        addBnt.addEventListener("click", (Event) =>{ 
                             Event.preventDefault ();
                             console.log("the button was clicked");
 
-                    //insert into picture and name at bottom                             
+                        //insert into picture and name at bottom                             
                             let grabDiv = document.createElement("div")
                             grabDiv.id = "selectedRecipe"
                             let grab = document.createElement("p");
@@ -131,11 +132,10 @@ const ingredient = (recipe) => {
                             myRecipes.append(grabDiv);
 
                     // add ingredienst to grocery list
-                    const recipeID = product.extendedIngredients;
-                    recipeID.forEach((recipeID, i) => {
-                        console.log(`${i} | ${recipeID.name}`);
-
-                        let groceryList = document.createElement("li")                    
+                        const recipeID = product.extendedIngredients;
+                        recipeID.forEach((recipeID, i) => {
+                            console.log(`${i} | ${recipeID.name}`);
+                            let groceryList = document.createElement("li")                    
                             groceryList.innerText = recipeID.name;
                             ingredientsList.append(groceryList)})
 
@@ -162,11 +162,9 @@ const ingredient = (recipe) => {
 //     }
 // });
 
-
-
 //start buttons
-const chicken = document.getElementById("pasta");
-chicken.addEventListener("click", (evnt) =>{
+const pasta = document.getElementById("pasta");
+pasta.addEventListener("click", (evnt) =>{
      const chkn = recipeLibrary("pasta")
     console.log("pasta was clicked")
 });
@@ -191,7 +189,3 @@ btn.addEventListener("click", (event) => {
     document.querySelector("#look-ingredients").value = " ";
 
 });
-
-  //recipeImg.src = `https://spoonacular.com/cdn/ingredients_100x100/${recipe.results[0].image}`;
-
-                //const variable = document.querySelector(`#${recipe.spoonacularSourceUrl}`)
