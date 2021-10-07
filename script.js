@@ -131,12 +131,12 @@ const ingredient = (recipe) => {
                             myRecipes.append(grabDiv);
 
                     // add ingredienst to grocery list
-                    let recipeID = product.extendedIngredients[i].name;
+                    const recipeID = product.extendedIngredients;
                     recipeID.forEach((recipeID, i) => {
-                        console.log(`${i} | ${recipeID[i]}`);
+                        console.log(`${i} | ${recipeID.name}`);
 
-                            let groceryList = document.createElement("li")                    
-                            groceryList.innerText = recipeID[i];
+                        let groceryList = document.createElement("li")                    
+                            groceryList.innerText = recipeID.name;
                             ingredientsList.append(groceryList)})
 
                             
