@@ -4,15 +4,15 @@ const DOMAIN = "https://api.spoonacular.com/recipes/";
 //const DOMAIN = "https://api.spoonacular.com/food/menuItems/search";
 //const DOMAIN = "https://api.spoonacular.com/food/ingredients/search";
     //first API KEY gmail@
-//const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb";
+//const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb"; 10/07
     //second API KEY developer@
-//const API_KEY = "a1529f902bc84599adb136529dc698ef";
+const API_KEY = "a1529f902bc84599adb136529dc698ef";
     //third API KEY hotmail@
 //const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
     //fourth API KEY code@
 //const API_KEY = "31298333e3854dc69486fb70810303d4";
     //fifth API KEY noan@
-const API_KEY = "dc7ebcc370ad458fbc4ca1b00ce22d47";
+//const API_KEY = "dc7ebcc370ad458fbc4ca1b00ce22d47"; 10/07
 
 
 const recipeLibrary  = (value) =>{
@@ -83,15 +83,22 @@ const ingredient = (recipe) => {
    
             console.log(ID)
               recipeDiv.addEventListener("click", (ev) => {
+               
             //fetchinh domain1 to get recipe information from input, when click in the recipe.
 
                 fetch(`${DOMAIN}${ID}/information?&apiKey=${API_KEY}`)
                 .then(response => response.json())
                 .then((data) => {
                     //console.log(data.extendedIngredients[0].name)
-                    ingred(data)})
-   
+                    ingred(data)}) 
+                    // if (toggle.style.display === "none"){
+                    //     toggle.style.display = "block";
+                    // }
+                    //     else {
+                    //         toggle.style.display = "none";
+                    //     }                                  
                 });
+             
          
                 const ingred = (product) =>{
                     console.log(product)
@@ -137,30 +144,37 @@ const ingredient = (recipe) => {
                             console.log(`${i} | ${recipeID.name}`);
                             let groceryList = document.createElement("li")                    
                             groceryList.innerText = recipeID.name;
-                            ingredientsList.append(groceryList)})
-
+                            // ingredientsList.append(groceryList)
+                            ingredientsList.append(groceryList);
+                           if(recipeID.name === groceryList.li){
+                               console.log("repeat" + recipeID.name)
+                           } else{
+                            ingredientsList.append(groceryList);
+                           }
+                       
+                            ingredientsList.append(groceryList);
                             
-                        })//event listener select btn   
-
+                    //console.log(groceryList)//li
+                 })              
+                       })//event listener select btn   
                         btnSearch.append(addBnt); //btn to select recipe 
                 }//product ingred
                  
     }//For loop
 
+//const hideDiv = document.getElementById("recipeDiv");
+// const toggle = document.getElementById("toggle");
 
-}//ingredient function
-
-// const hideDiv = document.getElementById("recipeDiv");
-//const toggle = document.getElementById("toggle");
-
-// toggle.addEventListener ("click", (evnts) => {
-//     toggle.preventDefault ();
-//     if (hideDiv.style.display !== "none"){
-//         hideDiv.style.display = "none";
+// recipeDiv.addEventListener ("click", (evnts) => {
+//     //toggle.preventDefault ();
+//     if (toggle.style.display !== "none"){
+//         toggle.style.display = "block";
 //     }   else {
-//         hideDiv.style.display = "flex";
+//         toggle.style.display === "none";
 //     }
 // });
+
+}//ingredient function
 
 //start buttons
 const pasta = document.getElementById("pasta");
