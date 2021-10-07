@@ -37,7 +37,7 @@ const ingredient = (recipe) => {
      console.log(recipe);
          
     const recipes = document.querySelector(".recipes");
-    //const content = document.querySelector(".content");  
+    const content = document.querySelector(".content");  
     const grocery = document.querySelector("#grocery")
     const myRecipes = document.querySelector("#myRecipes")
     const ingredientsList = document.querySelector("#ingredients")
@@ -64,25 +64,38 @@ const ingredient = (recipe) => {
     //isert extra div to match ID
     const element1 = document.createElement("div");
     const btnSearch = document.createElement("div");
+    const toggle = document.createElement("div")
     recipeDiv.id = ("recipeDiv");
     recipes.append(element1);    
     recipeDiv.append(recipeName, recipeImg);
     element1.append(recipeDiv);
     element1.append(btnSearch);
+    toggle.id = ("toggle");
+    recipeDiv.append(toggle);
+
+    toggle.addEventListener ("click", (evnts) => {
+        //toggle.preventDefault ();
+        if (recipeDiv.style.display !== "none"){
+            recipeDiv.style.display = toggle;
+        }   else {
+            recipeDiv.style.display = "none";
+        }
+    });
     
    
    
             console.log(ID)
               recipeDiv.addEventListener("click", (ev) => {
             //fetchinh domain1 to get recipe information from input, when click in the recipe.
+
                 fetch(`${DOMAIN1}${ID}/information?&apiKey=${API_KEY}`)
                 .then(response => response.json())
                 .then((data) => {
                     //console.log(data.extendedIngredients[0].name)
                     ingred(data)})
+   
                 });
-
-
+         
                 const ingred = (product) =>{
                     console.log(product)
                     
@@ -94,18 +107,16 @@ const ingredient = (recipe) => {
                         recipeID.id = "recipeIngredients"
                         // recipeID.innerText = ("Ingredients:");
                         recipeID.innerText = (ingred[j].name);
-                        recipeDiv.appendChild(recipeID);
+                        toggle.appendChild(recipeID);
                     }//for loop j
-                   
+                                       
                     const instruction = product.instructions;
                     console.log(instruction);
-                    recipeDiv.append(instruction);
+                    toggle.append(instruction);
                     
 
                     
                     
-                    //const selectBtn = document.getElementById("select-bnt")
-                    //const selected = (selectBtn) => {
                         addBnt.addEventListener("click", (Event) =>{
                             Event.preventDefault ();
                             console.log("the button was clicked");
@@ -113,13 +124,10 @@ const ingredient = (recipe) => {
                     //insert into picture and name at bottom                             
                             let grabDiv = document.createElement("div")
                             grabDiv.id = "selectedRecipe"
-                            //let grab = document.querySelector("#recipeDiv");
-                            let grab = document.createElement("p") ;
-                            //console.log(grab)
+                            let grab = document.createElement("p");
                             grab.innerText = (recipeName.innerText);
                             grabDiv.append(recipeImg);  
                             grabDiv.append(grab);                          
-                            //grabDiv.innerHTML = grab;
                             myRecipes.append(grabDiv);
 
                     // add ingredienst to grocery list
@@ -133,17 +141,26 @@ const ingredient = (recipe) => {
 
                             
                         })//event listener select btn   
-                        //} 
 
                         btnSearch.append(addBnt); //btn to select recipe 
                 }//product ingred
-             
+                 
     }//For loop
-recipeDiv.innerText = " ";
+
 
 }//ingredient function
 
+// const hideDiv = document.getElementById("recipeDiv");
+//const toggle = document.getElementById("toggle");
 
+// toggle.addEventListener ("click", (evnts) => {
+//     toggle.preventDefault ();
+//     if (hideDiv.style.display !== "none"){
+//         hideDiv.style.display = "none";
+//     }   else {
+//         hideDiv.style.display = "flex";
+//     }
+// });
 
 
 
