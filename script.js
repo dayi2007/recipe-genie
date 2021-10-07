@@ -85,7 +85,6 @@ const ingredient = (recipe) => {
               recipeDiv.addEventListener("click", (ev) => {
                
             //fetchinh domain1 to get recipe information from input, when click in the recipe.
-
                 fetch(`${DOMAIN}${ID}/information?&apiKey=${API_KEY}`)
                 .then(response => response.json())
                 .then((data) => {
@@ -144,13 +143,13 @@ const ingredient = (recipe) => {
                             console.log(`${i} | ${recipeID.name}`);
                             let groceryList = document.createElement("li")                    
                             groceryList.innerText = recipeID.name;
-                            // ingredientsList.append(groceryList)
-                            ingredientsList.append(groceryList);
-                           if(recipeID.name === groceryList.li){
-                               console.log("repeat" + recipeID.name)
-                           } else{
-                            ingredientsList.append(groceryList);
-                           }
+                        //     // ingredientsList.append(groceryList)
+                        //     ingredientsList.append(groceryList);
+                        //    if(recipeID.name === groceryList.li){
+                        //        console.log("repeat" + recipeID.name)
+                        //    } else{
+                        //     ingredientsList.append(groceryList);
+                        //    }
                        
                             ingredientsList.append(groceryList);
                             
@@ -158,8 +157,7 @@ const ingredient = (recipe) => {
                  })              
                        })//event listener select btn   
                         btnSearch.append(addBnt); //btn to select recipe 
-                }//product ingred
-                 
+                }//product ingred            
     }//For loop
 
 //const hideDiv = document.getElementById("recipeDiv");

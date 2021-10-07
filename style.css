@@ -48,8 +48,11 @@ button[type=submit] {
     margin: 5em;
     padding-top: 1em;
     padding-bottom: 3em;
-    padding-left: 3em;
+
     padding-right: 3em;
+}
+#grocery li {
+    padding-left: 5em;
 }
 .content{
     display: flex;
@@ -83,18 +86,22 @@ h3{
     height: 120px;
 }
 #toggle{
-     /*display: none; 
-    align-content: center;
-    align-items: center; */
+     /*display: none; */
     padding-top: 1em;
     text-align: center;
     list-style-type: none;
 }
 #ingredients{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     text-align:justify;
-    padding-left: 3em;
+    /* padding-left: 3em; */
 }
-@media screen and (max-width: 820px){
+#ingredients li{
+    padding-left: 20em;
+}
+@media screen and (max-width: 800px){
     #grocery{
         display: flex;
         flex-direction: column;
