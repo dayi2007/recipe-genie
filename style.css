@@ -109,16 +109,19 @@ h3{
         text-align: center; 
         background-color:#184ddd7a;
         font-size: 20px;
+        
     }
 #grocery h3{
 font-size: 20px;
+padding-left: 1em;
 }
 #grocery h5{
 font-size: 14px;
+padding-left: 3px;
 }
 #ingredients{
     text-align: center;
-    padding-left: 1px;
+    padding-left: 1em;
 }
 #myRecipes{
     display: flex;
