@@ -4,15 +4,15 @@ const DOMAIN = "https://api.spoonacular.com/recipes/";
 //const DOMAIN = "https://api.spoonacular.com/food/menuItems/search";
 //const DOMAIN = "https://api.spoonacular.com/food/ingredients/search";
     //first API KEY gmail@
-//const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb"; 10/07
+//const API_KEY = "93cb391c8bce4d07a71b178efe54a8cb"; 
     //second API KEY developer@
-const API_KEY = "a1529f902bc84599adb136529dc698ef";
+//const API_KEY = "a1529f902bc84599adb136529dc698ef"; 10/08
     //third API KEY hotmail@
-//const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
+const API_KEY = "289c99784fd74ce69b71ea6824ca68bd";
     //fourth API KEY code@
 //const API_KEY = "31298333e3854dc69486fb70810303d4";
     //fifth API KEY noan@
-//const API_KEY = "dc7ebcc370ad458fbc4ca1b00ce22d47"; 10/07
+//const API_KEY = "dc7ebcc370ad458fbc4ca1b00ce22d47"; 
 
 
 const recipeLibrary  = (value) =>{
@@ -156,6 +156,7 @@ const ingredient = (recipe) => {
 
 const removeChildren = () => {
     const toggle = document.querySelector("#toggle")
+    //for (const element of toggle){
     while (toggle.firstChild){
         toggle.removeChild(toggle.firstChild)
     } 
@@ -172,11 +173,22 @@ veg.addEventListener("click", (evnt) =>{
      const vegetarian = recipeLibrary("vegetarian")
     console.log("veg was clicked")
 });
+const chicken = document.getElementById("chicken");
+chicken.addEventListener("click", (evnt) =>{
+     const chkn = recipeLibrary("chicken")
+    console.log("chicken was clicked")
+});
+const beef = document.getElementById("beef");
+beef.addEventListener("click", (evnt) =>{
+     const beef = recipeLibrary("beef")
+    console.log("beef was clicked")
+});
 const dessert = document.getElementById("dessert");
 dessert.addEventListener("click", (evnt) =>{
      const Dessert = recipeLibrary("dessert")
     console.log("Dessert was clicked")
 });
+
 
 const btn = document.querySelector("#btn");
 //event listener for search

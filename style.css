@@ -11,6 +11,8 @@ h1{
 .search{
     margin-left: 10px;
     margin-right: 10px;
+    width: 50%;
+    margin: auto;
 }
 .types-food{
     display: flex;
@@ -44,8 +46,9 @@ button[type=submit] {
     flex-direction: column;
     text-align: center;
     background-color:#dd18c37a;
-    /* width: 60em; */
-    margin: 5em;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 5em;
     padding-top: 1em;
     padding-bottom: 3em;
 
