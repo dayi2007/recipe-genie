@@ -51,8 +51,6 @@ button[type=submit] {
     margin-bottom: 5em;
     padding-top: 1em;
     padding-bottom: 3em;
-
-    padding-right: 3em;
 }
 #grocery li {
     padding-left: 5em;
@@ -99,10 +97,10 @@ h3{
     flex-wrap: wrap;
     flex-direction: column;
     text-align:justify;
-    /* padding-left: 3em; */
+ 
 }
 #ingredients li{
-    padding-left: 20em;
+    padding-left: 15em;
 }
 @media screen and (max-width: 800px){
     #grocery{
