@@ -40,7 +40,7 @@ const ingredient = (recipe) => {
     const ingredientsList = document.querySelector("#ingredients")
     recipes.innerText = " "; 
 
-    for(let i=0; i<= 1; i++ ){
+    for(let i=0; i<= 9; i++ ){
    
 
      const recipeName = document.createElement("h3");
@@ -69,16 +69,6 @@ const ingredient = (recipe) => {
         element1.append(btnSearch);
         toggle.id = ("toggle");
         recipeDiv.append(toggle);
-
-    // toggle.addEventListener ("click", (evnts) => {
-    //     //toggle.preventDefault ();
-    //     if (recipeDiv.style.display !== "none"){
-    //         recipeDiv.style.display = toggle;
-    //     }   else {
-    //         recipeDiv.style.display = "none";
-    //     }
-    // });
-  
    
             console.log(ID)
               recipeDiv.addEventListener("click", (ev) => {
@@ -170,7 +160,6 @@ const removeChildren = () => {
         toggle.removeChild(toggle.firstChild)
     } 
 }
-
 
 //start buttons
 const pasta = document.getElementById("pasta");
