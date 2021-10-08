@@ -26,9 +26,23 @@ fetch(`${DOMAIN}/complexSearch?query=${value}&apiKey=${API_KEY}&includeNutrition
         })
 }
 ```
+<h3> MPV </h3>
+
+<li>Get API Connection and take data out of it</li>
+<li>Pull out recipes from API</li>
+<li>Lets you pick the recipes for the week and store them for you</li>
+
+<h4>PostMVP</h4>
+
+<li>Pull ingredients from selected recipes</li>
+
+<h4>Future</h4>
+
+<li>Pick Random recipes when click on the choices</li>
+<li>Animations</li>
 
 
-<h3>Time frmaes</h3>
+<h3>Time frames</h3>
 
 | Component | Priority | Estimated Time | Actual Time |
 | --- | :---: |  :---: | :---: |
