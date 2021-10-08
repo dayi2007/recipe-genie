@@ -25,7 +25,7 @@ fetch(`${DOMAIN}/complexSearch?query=${value}&apiKey=${API_KEY}&includeNutrition
             console.log(`Error: ${error}`)
         })
 }
-
+```
 
 
 <h3>Time frmaes</h3>
