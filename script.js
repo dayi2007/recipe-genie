@@ -70,32 +70,28 @@ const ingredient = (recipe) => {
         toggle.id = ("toggle");
         recipeDiv.append(toggle);
 
-    toggle.addEventListener ("click", (evnts) => {
-        //toggle.preventDefault ();
-        if (recipeDiv.style.display !== "none"){
-            recipeDiv.style.display = toggle;
-        }   else {
-            recipeDiv.style.display = "none";
-        }
-    });
-    
-   
+    // toggle.addEventListener ("click", (evnts) => {
+    //     //toggle.preventDefault ();
+    //     if (recipeDiv.style.display !== "none"){
+    //         recipeDiv.style.display = toggle;
+    //     }   else {
+    //         recipeDiv.style.display = "none";
+    //     }
+    // });
+  
    
             console.log(ID)
               recipeDiv.addEventListener("click", (ev) => {
-               
-            //fetchinh domain1 to get recipe information from input, when click in the recipe.
+                if (toggle.firstChild){
+                    removeChildren();
+                }else {
+                //fetchinh domain1 to get recipe information from input, when click in the recipe.
                 fetch(`${DOMAIN}${ID}/information?&apiKey=${API_KEY}`)
                 .then(response => response.json())
                 .then((data) => {
-                    //console.log(data.extendedIngredients[0].name)
+                    
                     ingred(data)}) 
-                    // if (toggle.style.display === "none"){
-                    //     toggle.style.display = "block";
-                    // }
-                    //     else {
-                    //         toggle.style.display = "none";
-                    //     }                                  
+                }                                   
                 });
              
          
@@ -141,8 +137,15 @@ const ingredient = (recipe) => {
                         const recipeID = product.extendedIngredients;
                         recipeID.forEach((recipeID, i) => {
                             console.log(`${i} | ${recipeID.name}`);
+                            let tempArray = [];
+                            tempArray.push(recipeID.name);
+                            console.log(tempArray)
+
                             let groceryList = document.createElement("li")                    
                             groceryList.innerText = recipeID.name;
+
+                                //if(groceryList.innerText)
+
                         //     // ingredientsList.append(groceryList)
                         //     ingredientsList.append(groceryList);
                         //    if(recipeID.name === groceryList.li){
@@ -160,19 +163,16 @@ const ingredient = (recipe) => {
                 }//product ingred            
     }//For loop
 
-//const hideDiv = document.getElementById("recipeDiv");
-// const toggle = document.getElementById("toggle");
-
-// recipeDiv.addEventListener ("click", (evnts) => {
-//     //toggle.preventDefault ();
-//     if (toggle.style.display !== "none"){
-//         toggle.style.display = "block";
-//     }   else {
-//         toggle.style.display === "none";
-//     }
-// });
 
 }//ingredient function
+
+const removeChildren = () => {
+    const toggle = document.querySelector("#toggle")
+    while (toggle.firstChild){
+        toggle.removeChild(toggle.firstChild)
+    } 
+}
+
 
 //start buttons
 const pasta = document.getElementById("pasta");
