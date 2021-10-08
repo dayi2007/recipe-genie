@@ -136,28 +136,26 @@ const ingredient = (recipe) => {
                     // add ingredienst to grocery list
                         const recipeID = product.extendedIngredients;
                         recipeID.forEach((recipeID, i) => {
-                            console.log(`${i} | ${recipeID.name}`);
-                            let tempArray = [];
-                            tempArray.push(recipeID.name);
-                            console.log(tempArray)
+                            console.log(`${i} | ${recipeID.name} this is the array`);
+                            let groceryList = document.createElement("li") 
+                            //Attempt to filter ingredients
+                            // const tempArray = [];
+                            // const mainArray = []
+                            // tempArray.push(recipeID.name);
+                            // console.log(tempArray + " this is the temp array")
+                            // let filterIngredients = []
+                            //  if (ingredientsList.firstChild){
+                            //     filterIngredients = mainArray.filter((x) => !tempArray.includes(x))
+                            //     console.log(filterIngredients + " this is the filter");
+                            //     mainArray.push(filterIngredients)
+                            //     groceryList.innerText = filterIngredients;
+                            // }
+                                               
+                            groceryList.innerText = recipeID.name;                         
 
-                            let groceryList = document.createElement("li")                    
-                            groceryList.innerText = recipeID.name;
-
-                                //if(groceryList.innerText)
-
-                        //     // ingredientsList.append(groceryList)
-                        //     ingredientsList.append(groceryList);
-                        //    if(recipeID.name === groceryList.li){
-                        //        console.log("repeat" + recipeID.name)
-                        //    } else{
-                        //     ingredientsList.append(groceryList);
-                        //    }
-                       
                             ingredientsList.append(groceryList);
                             
-                    //console.log(groceryList)//li
-                 })              
+                        })              
                        })//event listener select btn   
                         btnSearch.append(addBnt); //btn to select recipe 
                 }//product ingred            
